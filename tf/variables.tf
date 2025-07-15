@@ -1,6 +1,7 @@
 variable "project_id" {
   type        = string
-  description = "xenon-pier-459606-n2"
+  description = "ID проекта"
+  default     = "xenon-pier-459606-n2"
 }
 
 variable "region" {
