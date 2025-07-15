@@ -43,7 +43,7 @@ resource "google_compute_instance" "vm_instance_1" {
   }
   
   metadata = {
-    ssh-keys = "jenkins-agent:${file("/root/.ssh/gcp_key.pub"")}"
+    ssh-keys = "jenkins-agent:${file("/root/.ssh/gcp_key.pub")}"
   }
 
   tags = var.vm_tags
@@ -52,6 +52,7 @@ resource "google_compute_instance" "vm_instance_1" {
     email  = var.service_account_email
     scopes = ["https://www.googleapis.com/auth/cloud-platform"]
   }
+
 }
 
 
@@ -72,7 +73,7 @@ resource "google_compute_instance" "vm_instance_2" {
   tags = var.vm_tags
 
   metadata = {
-    ssh-keys = "jenkins-agent:${file("/root/.ssh/gcp_key.pub"")}"
+    ssh-keys = "jenkins-agent:${file("/root/.ssh/gcp_key.pub")}"
   }
 
   service_account {
