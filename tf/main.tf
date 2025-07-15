@@ -16,6 +16,7 @@ provider "google" {
 
 resource "google_compute_disk" "my_disk_1" {
   name = "my-disk-1"
+  image = var.image
   size = var.disk_size_gb
   type = var.disk_type
   zone = var.zone
@@ -23,6 +24,7 @@ resource "google_compute_disk" "my_disk_1" {
 
 resource "google_compute_disk" "my_disk_2" {
   name = "my-disk-2"
+  image = var.image
   size = var.disk_size_gb
   type = var.disk_type
   zone = var.zone
@@ -92,10 +94,10 @@ resource "google_compute_firewall" "allow_http" {
    }
 
    source_ranges = ["0.0.0.0/0"]
-   target_tags = ["allow-http"]
+   target_tags = ["http"]
  }
 
-resource "google_compute_firewall" "ssh" {
+resource "google_compute_firewall" "allow_ssh" {
   name    = "allow-ssh"
   network = "default"
 
@@ -105,7 +107,7 @@ resource "google_compute_firewall" "ssh" {
   }
 
   source_ranges = ["0.0.0.0/0"]
-  target_tags   = ["allow-ssh"]
+  target_tags   = ["ssh"]
 }
 
 output "instance_name" {
