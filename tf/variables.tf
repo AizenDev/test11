@@ -69,8 +69,3 @@ variable "service_account_email" {
   description = "Сервисный аккаунт"
   default     = "543116208909-compute@developer.gserviceaccount.com"
 }
-
-variable "ssh_public_key" {
-  description = "SSH public key content"
-  type        = string
-}
