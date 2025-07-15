@@ -52,7 +52,7 @@ variable "disk_type" {
 }
 
 variable "vm_tags" {
-  type        = string
+  type        = list(string)
   description = "Теги для виртуальной машины"
   default     = ["allow-ssh", "web-server"]
 }
