@@ -41,10 +41,6 @@ resource "google_compute_instance" "vm_instance_1" {
     network = "default"
     access_config {}
   }
-  
-  metadata = {
-    ssh-keys = var.ssh_public_key
-  }
 
   tags = var.vm_tags
 
@@ -72,27 +68,23 @@ resource "google_compute_instance" "vm_instance_2" {
 
   tags = var.vm_tags
 
-  metadata = {
-    ssh-keys = var.ssh_public_key
-  }
-
   service_account {
     email  = var.service_account_email
     scopes = ["https://www.googleapis.com/auth/cloud-platform"]
   }
 }
 
-resource "google_compute_firewall" "allow_http_https" {
-   name        = "allow-http-https"
+resource "google_compute_firewall" "allow_http" {
+   name        = "allow-http"
    network     = "default"
-   description = "Allow HTTP and HTTPS from anywhere"
+   description = "Allow HTTP from anywhere"
    allow {
      protocol = "tcp"
-     ports    = ["80", "443"]
+     ports    = ["80"]
    }
 
    source_ranges = ["0.0.0.0/0"]
-   target_tags = ["web-server"]
+   target_tags = ["allow-http"]
  }
 
 resource "google_compute_firewall" "ssh" {
