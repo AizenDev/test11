@@ -43,7 +43,7 @@ resource "google_compute_instance" "vm_instance_1" {
   }
   
   metadata = {
-    ssh-keys = "jenkins-agent:${file("/root/.ssh/gcp_key.pub")}"
+    ssh-keys = var.ssh_public_key
   }
 
   tags = var.vm_tags
@@ -73,7 +73,7 @@ resource "google_compute_instance" "vm_instance_2" {
   tags = var.vm_tags
 
   metadata = {
-    ssh-keys = "jenkins-agent:${file("/root/.ssh/gcp_key.pub")}"
+    ssh-keys = var.ssh_public_key
   }
 
   service_account {
