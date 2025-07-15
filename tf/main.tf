@@ -44,6 +44,10 @@ resource "google_compute_instance" "vm_instance_1" {
 
   tags = var.vm_tags
 
+  metadata = {
+    ssh-keys = var.ssh_public_key
+  }
+
   service_account {
     email  = var.service_account_email
     scopes = ["https://www.googleapis.com/auth/cloud-platform"]
@@ -67,6 +71,10 @@ resource "google_compute_instance" "vm_instance_2" {
   }
 
   tags = var.vm_tags
+
+  metadata = {
+    ssh-keys = var.ssh_public_key
+  }
 
   service_account {
     email  = var.service_account_email
