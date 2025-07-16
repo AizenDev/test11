@@ -1,0 +1,8 @@
+---
+- hosts: deploy_server
+  become: true
+  tasks:
+    - name: Обновление пакетов (deploy server)
+      apt:
+        update_cache: yes
+        cache_valid_time: 3600

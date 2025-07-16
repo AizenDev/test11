@@ -1,0 +1,8 @@
+---
+- hosts: build_server
+  become: true
+  tasks:
+    - name: Обновление пакетов (build server)
+      apt:
+        update_cache: yes
+        cache_valid_time: 3600
