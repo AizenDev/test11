@@ -1,8 +1,38 @@
 ---
 - hosts: deploy_server
   become: true
+  vars:
+    container_name: "java-app"
+    docker_image: "led98/my-app:latest"
+    dockerhub_username: "led98"
+    dockerhub_password: ""
   tasks:
-    - name: Обновление пакетов (deploy server)
+    - name: Update packages
       apt:
         update_cache: yes
         cache_valid_time: 3600
+
+    - name: Install Docker
+      apt:
+        pkg: docker.io
+        update_cache: yes
+
+    - name: Pull Docker image
+      community.docker.docker_image:
+        name: "{{ docker_image }}"
+        source: pull
+
+    - name: Stop and remove existing container
+      community.docker.docker_container:
+        name: "{{ container_name }}"
+        state: absent
+        force_kill: yes
+
+    - name: Run application container
+      community.docker.docker_container:
+        name: "{{ container_name }}"
+        image: "{{ docker_image }}"
+        ports:
+          - "8080:8080"
+        restart_policy: always
+        detach: yes
