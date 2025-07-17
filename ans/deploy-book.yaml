@@ -1,5 +1,5 @@
 ---
-- hosts: deploy_server
+- hosts: deploy-host
   become: true
   vars:
     container_name: "java-app"
