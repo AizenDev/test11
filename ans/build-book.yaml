@@ -3,7 +3,7 @@
   hosts: build-host
   become: true
   vars:
-    app_src_dir: /tmp
+    app_src_dir: /tmp/my-app
     docker_image: "led98/my-app:latest"
     dockerhub_username: "led98"
     dockerhub_password: ""
