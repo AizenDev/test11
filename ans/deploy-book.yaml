@@ -12,9 +12,14 @@
         update_cache: yes
         cache_valid_time: 3600
 
-    - name: Install Docker
+    - name: Install required packages
       apt:
-        pkg: docker.io
+        pkg:
+          - docker.io
+          - python3-docker
+          - python3-pip
+          - python3-setuptools
+          - openjdk-11-jdk
         update_cache: yes
 
     - name: Login to Docker Hub

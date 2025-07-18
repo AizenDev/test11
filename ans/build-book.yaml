@@ -18,6 +18,9 @@
       apt:
         pkg:
           - docker.io
+          - python3-docker
+          - python3-pip
+          - python3-setuptools
           - openjdk-11-jdk
           - maven
         update_cache: yes
