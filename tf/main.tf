@@ -90,7 +90,7 @@ resource "google_compute_firewall" "allow_http" {
    description = "Allow HTTP from anywhere"
    allow {
      protocol = "tcp"
-     ports    = ["80"]
+     ports    = ["80", "8080"]
    }
 
    source_ranges = ["0.0.0.0/0"]
